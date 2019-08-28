@@ -22,6 +22,10 @@ export class HttpService {
     return this._httpClient.put(`/players/${_id}`, player);
   }
 
+  getPlayerStats(player) {
+    return this._httpClient.get(`http://overwatchy.com/profile/${player.platform}/${player.region}/${player.battleTag}`)
+  }
+
   // removePlayer(_id) {
   //   return this._httpClient.delete(`/players/${_id}`);
   // }

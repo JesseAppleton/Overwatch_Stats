@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Player = mongoose.model("Player");
-const Review = mongoose.model("Review");
+// const Review = mongoose.model("Review");
 
 class PlayerController {
     getAll(req, res){
