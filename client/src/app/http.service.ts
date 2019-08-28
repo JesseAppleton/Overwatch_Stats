@@ -12,10 +12,6 @@ export class HttpService {
 
   player: any;
 
-  ngOnInit() {
-
-  }
-  
   getPlayers() {
     return this._httpClient.get("/players");
   }
@@ -23,15 +19,27 @@ export class HttpService {
   getOnePlayer(_id) {
     return this._httpClient.get(`/players/${_id}`);
   } 
-  
-  getPlayerStats(player) {
-    return this._httpClient.get(`http://overwatchy.com/profile/${player.platform}/${player.region}/${player.battleTag}`);
+
+  // Could make this on the database side once setup
+  recentSearches : any = [
+    {"name": "Jesseyo", "number": "11148"},
+    {"name": "skull1502", "number": "1108"},
+  ];
+
+  getRecentSearches() {
+    return this.recentSearches;
   }
 
-  onSubmit() {
-    this.getPlayers();
-    // this.getPlayerStats(this.player);
-    
+  getPlayerStats(player) {
+    if (player.name && player.number) {
+      this.player = player;
+      this.recentSearches.unshift({"name": player.name, "number": player.number},)
+      return this._httpClient.get(`http://overwatchy.com/profile/pc/us/${player.name}-${player.number}`);
+    }
+    else {
+      return "Error";
+    }
+
   }
 
   // updatePlayer(_id, player) {
