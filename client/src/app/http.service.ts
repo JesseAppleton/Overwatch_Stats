@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class HttpService {
 
+  chartData: any;
+
   constructor(private _httpClient :  HttpClient) { }
 
   getPlayers() {
@@ -24,6 +26,15 @@ export class HttpService {
 
   getPlayerStats(player) {
     return this._httpClient.get(`http://overwatchy.com/profile/${player.platform}/${player.region}/${player.battleTag}`)
+  }
+
+
+  setChartData(data) {
+    this.chartData = data;
+  }
+
+  getChartData() {
+    return this.chartData;
   }
 
   // removePlayer(_id) {
