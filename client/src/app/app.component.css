@@ -78,7 +78,7 @@ tr:nth-child(even) {
 
 input {
     font-size: 18pt;
-    width: 500px;
+    width: 200px;
     height: 50px;
 }
 
@@ -87,5 +87,15 @@ a {
 }
 
 li {
+    font-family: inherit;
+}
+
+.techs {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.underline {
+    vertical-align: top;
+    height: 10px;
+    background-image: linear-gradient(to right, #FA9C1D, #FFFFFF);
 }
