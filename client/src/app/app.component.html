@@ -1,28 +1,100 @@
-<div class="container">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <p class="navbar-brand">
+    <img src="../assets/OW_Logo_Full_White.png" alt="Overwatch_logo.png" style="width: 100px;">
+    Overwatch Stats
+  </p>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/alpha']">Alpha</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/beta']">Beta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/chart']">Line Chart</a>
+      </li>
+      <li class="nav-item">
+        <!-- Modal link -->
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">How to</a>
+      </li>
+    </ul>
+  </div>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <p class="navbar-brand">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Overwatch_circle_logo.svg" alt="Overwatch_logo.png" style="width: 100px;">
-      Overwatch Stats
-    </p>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/alpha']">Alpha </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/beta']">Beta</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/chart']">Line Chart</a>
-        </li>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">How to use this site</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Enter your BattleTag into the search bar</li>
+            <li>???</li>
+            <li>Profit!</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>
+<!-- End Navbar -->
+<div class="container">
+  
+  <router-outlet></router-outlet>
+  
+  <div class="row">
+    <div class="col-6">
+      <h1>Recent Searches</h1>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+        </tr>
+        <tr> <!-- *ngFor="let trans of ledger" -->
+          <td>1</td>
+          <td><a href="https://playoverwatch.com/en-us/career/pc/Jesseyo-11148">Jesseyo#11148</a></td>
+        </tr>
+        <tr> <!-- *ngFor="let trans of ledger" -->
+          <td>2</td>
+          <td><a href="https://playoverwatch.com/en-us/career/pc/skull1502-1108">skull1502#1108</a></td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="col-6">
+      <h1>Information</h1>
+      <p>
+        This is a collaborative student project between <a href="https://github.com/aprosk">Alex Proskuryakov</a> & <a href="https://github.com/Jesseyoo">Jesse Appleton</a> while attending Coding Dojo.
+        We both have an interest in the game and wanted some experience with git and version control.
+      </p>
+      <h3>
+        Main technologies used:
+      </h3>
+      <ul>
+        <li>MongoDb</li>
+        <li>Express</li>
+        <li>Angular</li>
+        <li>Node.js</li>
+        <li>Chart.js</li>
+        <li>Bootstrap</li>
+        <li>Overwatch-api</li>
       </ul>
     </div>
-  </nav>
-  <!-- End Navbar -->
     
-  <router-outlet></router-outlet>
+  </div>
     
+  <div class="footer">
+    <em>© 2019 Alex Proskuryakov & Jesse Appleton </em>
+  </div>
 
 </div>
