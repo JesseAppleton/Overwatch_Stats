@@ -55,7 +55,7 @@ export class BetaComponent implements OnInit {
   }
 
   tankData() {
-    data 
+    this.data 
     for (let d of this.sampleData) {
 
     }
