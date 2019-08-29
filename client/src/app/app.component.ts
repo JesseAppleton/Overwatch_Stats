@@ -16,10 +16,12 @@ export class AppComponent {
 
   player : any;
   recentSearches : any;
+  showForm : boolean = true;
   
   ngOnInit() {
     this.player = { name: "", number: "" } ;
     this.getSearches();
+    this.showForm = true;
   }
 
   submit() {
@@ -31,6 +33,9 @@ export class AppComponent {
     })
     // updates list
     this.getSearches();
+
+    // hides form;
+    this.showForm = !this.showForm;
     
     // routes to user info app
     this._router.navigate([`/details`]);

@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <span class="navbar-brand">
-    <a class="nav-link" [routerLink]="['/']" style="color: #ffffff;">
+    <a class="nav-link" (click)="ngOnInit()" [routerLink]="['/']" style="color: #ffffff;">
       <img src="../assets/OW_Logo_Full_White.png" alt="Overwatch_logo.png" style="width: 100px;">
       Overwatch Stats
     </a>
@@ -50,13 +50,11 @@
 </nav>
 <!-- End Navbar -->
 
-<div class="container">
   <router-outlet></router-outlet>
-</div>
 
 <div class="container">
   
-  <div class="text-center">
+  <div *ngIf="showForm" class="text-center">
     <h1>Enter your BattleTag</h1>
     <form (submit)="submit()">
       <p>
