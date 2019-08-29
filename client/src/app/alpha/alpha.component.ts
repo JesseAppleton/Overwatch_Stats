@@ -54,6 +54,10 @@ export class AlphaComponent implements OnInit {
     this.getHero();
   }
 
+  getLastPlayer() {
+    let observable = this._httpService.getPlayer();
+  }
+  
   getHero() {
     // gets random hero for profile page
     this.hero = this.heroArr[Math.floor(Math.random()*this.heroArr.length)];

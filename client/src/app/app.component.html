@@ -58,9 +58,8 @@
     <h1>Enter your BattleTag</h1>
     <form (submit)="submit()">
       <p>
-        <input type="text" name="name" [(ngModel)]="player.name" placeholder="Jesseyo"/>
-        <span style="font-size: 20pt;"> # </span>
-        <input type="text" name="number" [(ngModel)]="player.number" placeholder="11148"/>
+        <input type="text" name="name" [(ngModel)]="tag" placeholder="Jesseyo#11148"/>
+        
         <button type="submit" class="btn btn-orange">Go!</button>
       </p>
     </form>
