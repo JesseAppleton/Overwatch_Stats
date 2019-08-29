@@ -17,9 +17,28 @@ export class AlphaComponent implements OnInit {
   player : any;
   playerExists : boolean = false;
 
+  heroArr = ["dva", "orisa", "reinhardt", "roadhog", 
+            "sigma", "winston", "wrecking-ball", "zarya", 
+            "ashe", "bastion", "doomfist", "genji", 
+            "hanzo", "junkrat", "mccree", "mei", 
+            "pharah", "reaper", "solider-76", "sombra", 
+            "symmetra", "torbjorn", "tracer", "widowmaker", 
+            "ana", "baptiste", "brigitte", "lucio", 
+            "mercy", "moira", "zenyatta"];
+            
+  hero : string = "";
+
+
   ngOnInit() {
+    // gets random hero for profile page
+    this.hero = "";
+
+    // shows form
     this.playerExists = false;
+
+
     this.getDetails();
+
   }
   
   getDetails() {
@@ -28,9 +47,18 @@ export class AlphaComponent implements OnInit {
       console.log("get player", data)
       this.player = data;
     })
+    // hides form
     this.playerExists = !this.playerExists;
+
+    // gets random hero for profile page
+    this.getHero();
   }
 
+  getHero() {
+    // gets random hero for profile page
+    this.hero = this.heroArr[Math.floor(Math.random()*this.heroArr.length)];
+    console.log("hero", this.hero);
+  }
   
 
 }
