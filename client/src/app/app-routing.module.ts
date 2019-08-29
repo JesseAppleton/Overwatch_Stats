@@ -6,7 +6,7 @@ import { BetaComponent } from './beta/beta.component'
 import { LineChartComponent } from './line-chart/line-chart.component';
 
 const routes: Routes = [
-  {path: 'alpha', component: AlphaComponent},
+  {path: 'details', component: AlphaComponent},
   {path: 'beta', component: BetaComponent},
   {path: 'chart', component: LineChartComponent}
 

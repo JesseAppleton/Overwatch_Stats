@@ -74,7 +74,6 @@ export class BetaComponent implements OnInit {
     this._httpService.setChartData(data);
     console.log(data)
   }
-
   
   // formatData() {
   
@@ -131,10 +130,7 @@ export class BetaComponent implements OnInit {
       // chartData.push(
       //   {x: data.date, y: data.tank}
       // )
-    }
-  
-    
-    
+      
     return {dates: dates, tanks: tank, support: support, damage: damage, all: all}
   }
 

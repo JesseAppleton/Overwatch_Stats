@@ -1,28 +1,102 @@
 * {
-    background-color: #4A4C4E;
     font-family: 'Teko', sans-serif;
+    /* 
+
+    Overwatch colors:
+    #FA9C1D (Orange)
+    #FFFFFF (White)
+    #4A4C4E (Grey)
+
+    */
+}
+
+.navbar {
+    background-color: #4A4C4E;
+
 }
 
 .footer {
     position: fixed;
+    z-index: 99;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #FA9C1D;
-    color: white;
+    color:#FFFFFF;
     text-align: center;
 }
 
 .navbar-brand {
-    font-size: 36pt;
+    font-size: 46pt;
 }
 
+.nav-item {
+    font-size: 20pt;
+}
 
-/* 
+h1 {
+    font-style: italic;
+    border-bottom: 2px solid #FA9C1D 1px solid #4A4C4E;
+}
 
-Overwatch colors:
-#FA9C1D (Orange)
-#FFFFFF (White)
-#4A4C4E (Grey)
+h3 {
+    font-style: italic;
+}
 
-*/
+p {
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    font-size: 15pt;
+}
+
+td, th {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.btn-orange {
+    vertical-align: top;
+    color: #ffffff;
+    background-color: #FA9C1D;
+    margin-left: 5px;
+    font-size: 18pt;
+    width: 100px;
+    height: 51px;
+}
+
+input {
+    font-size: 18pt;
+    width: 200px;
+    height: 50px;
+}
+
+a {
+    font-family: inherit;
+}
+
+li {
+    font-family: inherit;
+}
+
+.techs {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.underline {
+    vertical-align: top;
+    height: 10px;
+    background-image: linear-gradient(to right, #FA9C1D, #FFFFFF);
+}
