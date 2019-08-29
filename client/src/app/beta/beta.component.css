@@ -2,3 +2,6 @@
     background-color:white;
 }
 
+app-line-chart {
+    max-height:500px;
+}
