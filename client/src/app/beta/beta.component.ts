@@ -19,48 +19,120 @@ export class BetaComponent implements OnInit {
 
 
   sampleData = [
-    {date: new Date('2019-08-17T13:24:00'),
+    {date: '2019-08-16T13:24:00',
+    damage: null,
+    support: 1200,
+    tank: 1070,
+    cgWon: 220,
+    cgLost: 150,
+    cgDraw: 12 },
+    {date: '2019-08-17T13:24:00',
     damage: 1000,
     support: 1200,
+    tank: 1040,
+    cgWon: 220,
+    cgLost: 150,
+    cgDraw: 12 },
+    {date: '2019-08-17T13:24:00',
+    damage: 1000,
+    support: 1200,
+    tank: 1040,
+    cgWon: 220,
+    cgLost: 150,
+    cgDraw: 12 },
+    {date: '2019-08-17T14:24:00',
+    damage: 1100,
+    support: 1200,
+    tank: 1040,
+    cgWon: 220,
+    cgLost: 150,
+    cgDraw: 12 },
+    {date: '2019-08-18T15:24:00',
+    damage: 1000,
+    support: 1300,
     tank: 1030,
     cgWon: 220,
     cgLost: 150,
     cgDraw: 12 },
-    {date: new Date('2019-08-17T13:24:00'),
+    {date: '2019-08-20T13:24:00',
     damage: 1000,
     support: 1200,
-    tank: 1030,
+    tank: 1070,
     cgWon: 220,
     cgLost: 150,
     cgDraw: 12 },
-    {date: new Date('2019-08-17T13:24:00'),
-    damage: 1000,
-    support: 1200,
-    tank: 1030,
-    cgWon: 220,
-    cgLost: 150,
-    cgDraw: 12 },
+
     
   ]
 
-  data: any = {
-    
-  }
-
+  data: any
 
   constructor(private _httpService: HttpService) { }
   
   ngOnInit() {
-
+    let data = this.formatData();
+    this._httpService.setChartData(data);
+    console.log(data)
   }
+  
+  // formatData() {
+  
+  //   let chartData = [];
+  //   for (let data of this.sampleData) {
+  //     console.log(data)
+  //     chartData.push(
+  //       {x: data.date, y: data.tank}
+  //     )
+  //   }
+  //   console.log(chartData)
+  //   return chartData
+  // }
+  formatData() {
+    let dates = [];
+    let tank = [];
+    let support = [];
+    let damage = [];
+    let all = [];
+    
+ 
+   
+    for (let i=0; i<this.sampleData.length; i++) {
+      let data = this.sampleData[i];
+      dates.push(new Date(data.date).toLocaleDateString("en-US"));
+      if (i>0 && i<this.sampleData.length-1) {
+        if (data.tank != this.sampleData[i-1].tank) {
+          tank.push({t: new Date(data.date), y: data.tank });
+        }
+        if (data.support != this.sampleData[i-1].support) {
+          support.push({t: new Date(data.date), y: data.support});
+        }
+        if (data.damage != this.sampleData[i-1].damage) {
+          damage.push({t: new Date(data.date), y: data.damage});
+        }
+        all.push(data.tank, data.damage, data.support)
+      }
+      else {
+        tank.push({t: new Date(data.date), y: data.tank });
+        support.push({t: new Date(data.date), y: data.support});
+        damage.push({t: new Date(data.date), y: data.damage});
 
-  tankData() {
-    this.data 
-    for (let d of this.sampleData) {
+        if (data.tank) {all.push(data.tank)}
+        if (data.support) {all.push(data.support)}
+        if (data.damage) {all.push(data.tank)}
+        
+      }
+      // tank.push({t: new Date(data.date), y: data.tank });
+      // support.push({t: new Date(data.date), y: data.support});
+      // damage.push({t: new Date(data.date), y: data.damage});
+      // all.push(data.tank, data.damage, data.support)
 
-    }
+      
+      // chartData.push(
+      //   {x: data.date, y: data.tank}
+      // )
+      
+    return {dates: dates, tanks: tank, support: support, damage: damage, all: all}
   }
-
 
   getStats(player) {
     let observable = this._httpService.getPlayerStats(player);

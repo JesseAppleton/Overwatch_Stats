@@ -1,3 +1,16 @@
 * {
     background-color: white;
 }
+
+#chart-container {
+    height:500px;
+    
+    /* position: absolute; */
+}
+
+#container-container {
+    /* height:500px; */
+    /* position: absolute; */
+    /* margin- */
+    padding-bottom:5px
+}

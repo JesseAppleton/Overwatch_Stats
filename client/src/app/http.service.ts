@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class HttpService {
 
+  chartData: any;
+
   constructor(private _httpClient :  HttpClient) { }
 
   player: any;
@@ -39,6 +41,14 @@ export class HttpService {
     this.recentSearches.unshift({"name": player.name, "number": player.number, "data": this.player},)
     return this.player;
 
+  }
+
+  setChartData(data) {
+    this.chartData = data;
+  }
+
+  getChartData() {
+    return this.chartData;
   }
 
   // updatePlayer(_id, player) {
