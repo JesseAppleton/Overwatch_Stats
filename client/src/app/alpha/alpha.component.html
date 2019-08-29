@@ -4,7 +4,7 @@
         <div class="content">
 
             <div class="row">
-                <div class="col-6 lg-2 md-2 sm-1">
+                <div class="col-3 lg-2 md-2 sm-1">
                     <h1><img src="{{ player.portrait }}" alt="player_portrait.png" style="width: 100px;"><em>{{ player.username }}</em></h1>
 
                     <div class="d-flex justify-content-center align-items-center" [ngStyle]="{'background-image': 'url(' + player.levelFrame + ')', 'width':'200px', 'height':'200px', 'background-position':'center'}">
@@ -27,6 +27,9 @@
                         | <img src="{{ player.competitive.support.rank_img }}" alt="rank_img.png" style="width: 50px;">
                         {{ player.competitive.support.rank }}
                     </h3>
+                </div>
+                <div class="d-flex align-items-bottom">
+                    <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/{{ hero }}/career-portrait.png" alt="hero_image.png">
                 </div>
             </div>
         </div>

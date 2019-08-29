@@ -32,3 +32,10 @@ h3 {
     z-index: 5;
 }
 
+.right {
+    vertical-align: bottom;
+}
+
+.row {
+    vertical-align: bottom;
+}
