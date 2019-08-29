@@ -31,6 +31,10 @@ export class AlphaComponent implements OnInit {
     this.playerExists = !this.playerExists;
   }
 
+  getLastPlayer() {
+    let observable = this._httpService.getPlayer();
+  }
+
   
 
 }

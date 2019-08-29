@@ -14,17 +14,24 @@ export class AppComponent {
 
   constructor(private _httpService :  HttpService, private _router : Router) { }
 
-  player : any;
+  player = {name: "", number: ""};
+  tag: any;
   recentSearches : any;
   showForm : boolean = true;
   
   ngOnInit() {
-    this.player = { name: "", number: "" } ;
+    
+
     this.getSearches();
     this.showForm = true;
   }
 
   submit() {
+    let split = this.tag.split('#');
+    console.log(split);
+    this.player.name = split[0];
+    this.player.number = split[1];
+
     let observable = this._httpService.getPlayerStats(this.player);
     observable.subscribe(data => {
       this.player = data;
