@@ -15,24 +15,20 @@ export class AlphaComponent implements OnInit {
   constructor(private _httpService : HttpService, private _active : ActivatedRoute, private _router : Router) { }
 
   player : any;
-
+  playerExists : boolean = false;
 
   ngOnInit() {
-    let observable : Observable<any> = this._active.params;
-    observable.subscribe(data => {
-      this.player = data;
-      console.log("init player", this.player)
-    })
-
-    this.getPlayer();
+    this.playerExists = false;
+    this.getDetails();
   }
   
-  getPlayer() {
-    let observable = this._httpService.getPlayerStats(this.player);
+  getDetails() {
+    let observable = this._httpService.getPlayer();
     observable.subscribe(data => {
       console.log("get player", data)
+      this.player = data;
     })
-
+    this.playerExists = !this.playerExists;
   }
 
   

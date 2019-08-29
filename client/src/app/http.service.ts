@@ -16,14 +16,18 @@ export class HttpService {
     return this._httpClient.get("/players");
   }
 
+  getPlayer() {
+    return this.player;
+  }
+
   getOnePlayer(_id) {
     return this._httpClient.get(`/players/${_id}`);
   } 
 
   // Could make this on the database side once setup
   recentSearches : any = [
-    {"name": "Jesseyo", "number": "11148"},
-    {"name": "skull1502", "number": "1108"},
+    {"name": "Jesseyo", "number": "11148", "data": {} },
+    {"name": "skull1502", "number": "1108", "data": {} },
   ];
 
   getRecentSearches() {
@@ -31,14 +35,9 @@ export class HttpService {
   }
 
   getPlayerStats(player) {
-    if (player.name && player.number) {
-      this.player = player;
-      this.recentSearches.unshift({"name": player.name, "number": player.number},)
-      return this._httpClient.get(`http://overwatchy.com/profile/pc/us/${player.name}-${player.number}`);
-    }
-    else {
-      return "Error";
-    }
+    this.player = this._httpClient.get(`http://overwatchy.com/profile/pc/us/${player.name}-${player.number}`);
+    this.recentSearches.unshift({"name": player.name, "number": player.number, "data": this.player},)
+    return this.player;
 
   }
 
