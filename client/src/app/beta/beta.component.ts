@@ -121,6 +121,9 @@ export class BetaComponent implements OnInit {
         if (data.damage) {all.push(data.tank)}
         
       }
+    }
+    return {dates: dates, tanks: tank, support: support, damage: damage, all: all}
+  }
       // tank.push({t: new Date(data.date), y: data.tank });
       // support.push({t: new Date(data.date), y: data.support});
       // damage.push({t: new Date(data.date), y: data.damage});
@@ -131,16 +134,16 @@ export class BetaComponent implements OnInit {
       //   {x: data.date, y: data.tank}
       // )
       
-    return {dates: dates, tanks: tank, support: support, damage: damage, all: all}
-  }
+    
+  
 
-  getStats(player) {
-    let observable = this._httpService.getPlayerStats(player);
-    observable.subscribe(data => {
-      console.log(data);
+  // getStats(player) {
+  //   let observable = this._httpService.getPlayerStats(player);
+  //   observable.subscribe(data => {
+  //     console.log(data);
 
-    })
-  }
+  //   })
+  // }
 
 
 
