@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { HttpService } from '../http.service';
 
 import { Chart } from 'chart.js';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-beta',
@@ -93,12 +93,36 @@ export class BetaComponent implements OnInit {
     let support = [];
     let damage = [];
     let all = [];
-    
- 
-   
+
+    //sets time of day to 0
+    function getDate(ms) {
+      let date = new Date(ms);
+      let day = date.getDate();
+      let month = date.getMonth();
+      let year = date.getFullYear();
+      return new Date(year, month, day)
+
+    }
+
+    let _date = new Date(this.sampleData[0].date).getTime();
+
+
+    dates.push(getDate(_date).toLocaleDateString("en-US"));
+
+
     for (let i=0; i<this.sampleData.length; i++) {
       let data = this.sampleData[i];
-      dates.push(new Date(data.date).toLocaleDateString("en-US"));
+
+      let newDate = new Date(data.date).getTime();
+      if (newDate + 86400000 > _date) {
+        while (newDate + 86400000 > _date) {
+          _date += 86400000;
+          dates.push(getDate(_date).toLocaleDateString("en-US"))
+
+        }
+
+      }
+      // dates.push(new Date(data.date).toLocaleDateString("en-US"));
       if (i>0 && i<this.sampleData.length-1) {
         if (data.tank != this.sampleData[i-1].tank) {
           tank.push({t: new Date(data.date), y: data.tank });
@@ -122,6 +146,12 @@ export class BetaComponent implements OnInit {
         
       }
     }
+    // tank.push({t: new Date(data.date), y: data.tank });
+    // support.push({t: new Date(data.date), y: data.support});
+    // damage.push({t: new Date(data.date), y: data.damage});
+    // all.push(data.tank, data.damage, data.support)
+
+
     return {dates: dates, tanks: tank, support: support, damage: damage, all: all}
   }
       // tank.push({t: new Date(data.date), y: data.tank });
