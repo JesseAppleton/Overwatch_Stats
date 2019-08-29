@@ -1,12 +1,12 @@
-<p>Details!</p>
+<div *ngIf="playerExists">
 
-<div>
-    <p>{{ player | json }}</p> 
-    <ul>
-        <li>{{ player.username }}</li>
-        <li>{{ player.level }}</li>
-        <li><img src="{{ player.username }}" alt="player_portrait.png"></li>
-
-    </ul>
-
+    <div class="background-image"></div>
+    <div class="content">
+        <h1><img src="{{ player.portrait }}" alt="player_portrait.png" style="width: 100px;"><em>{{ player.username }}</em></h1>
+        <h3><img class="levelFrame"src="{{ player.levelFrame }}" alt="levelFrame.png"> <span class="level">{{ player.level }}</span></h3>
+        
+        <div class="left-stats">
+            <h3>{{ player.games.quickplay.won + player.games.competitive.won}} GAMES WON</h3>
+        </div>
+    </div>
 </div>

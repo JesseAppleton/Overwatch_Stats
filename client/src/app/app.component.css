@@ -17,11 +17,12 @@
 
 .footer {
     position: fixed;
+    z-index: 99;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #FA9C1D;
-    color:#4A4C4E;
+    color:#FFFFFF;
     text-align: center;
 }
 
