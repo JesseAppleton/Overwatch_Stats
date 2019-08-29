@@ -38,15 +38,17 @@ export class LineChartComponent implements OnInit {
     maintainAspectRatio: false,
     legend: {position: 'bottom'},
     layout: {padding: 20},
-    title: {text: 'SR Ratings', display: true, fontSize:20, fontFamily:'Helvetica'},
+    title: {text: 'SR Ratings', display: true, fontSize:35, fontFamily:'teko'},
     scales: {
-      // gridLines: {drawTicks: true},
+      gridLines: {drawTicks: true},
       xAxes: [
         // {scaleLabel: {labelString: "Time"}},
         // {display: true},
+        
         {type: 'time'},
         {time: {unit: 'day'}},
-        // {ticks: {source: "data"}}
+        {ticks: {display:true}}
+       
         
         
       ],
