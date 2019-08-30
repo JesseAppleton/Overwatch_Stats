@@ -2,12 +2,12 @@
     z-index: 1;
     background-image: url('../../assets/blurred_background.png');
     background-position: center;
-    width: 1920px;
-    height: 800px;
+    background-size:auto;
+    /* height: 800px; */
 }
 
 .content {
-    padding: 5%;
+    /* padding: 5%; */
     color: #FFFFFF;
     font-family: 'Teko', sans-serif;
 }
@@ -27,15 +27,13 @@ h3 {
     height: 200px;
 }
 
-.level {
-    position: fixed;
+#level {
+    /* position: fixed; */
+    font-size:42pt;
     z-index: 5;
 }
 
-.right {
-    vertical-align: bottom;
+#hero {
+    max-width:100%;
 }
 
-.row {
-    vertical-align: bottom;
-}

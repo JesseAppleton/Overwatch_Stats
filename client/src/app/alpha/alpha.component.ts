@@ -11,11 +11,8 @@ import { Observable } from 'rxjs';
 })
 
 export class AlphaComponent implements OnInit {
-
-  constructor(private _httpService : HttpService, private _active : ActivatedRoute, private _router : Router) { }
-
   player : any;
-  playerExists : boolean = false;
+  playerExists : boolean;
 
   heroArr = ["dva", "orisa", "reinhardt", "roadhog", 
             "sigma", "winston", "wrecking-ball", "zarya", 
@@ -28,30 +25,43 @@ export class AlphaComponent implements OnInit {
             
   hero : string = "";
 
+  constructor(private _httpService : HttpService, private _active : ActivatedRoute, private _router : Router) { }
+
+
 
   ngOnInit() {
     // gets random hero for profile page
     this.hero = "";
 
-    // shows form
-    this.playerExists = false;
-
-
+    // shows forms
     this.getDetails();
+    
 
   }
   
   getDetails() {
     let observable = this._httpService.getPlayer();
+    console.log('observable', observable)
     observable.subscribe(data => {
-      console.log("get player", data)
+      console.log("getting player", data)
       this.player = data;
-    })
-    // hides form
-    this.playerExists = !this.playerExists;
+    
+      // hides form
+      if (this.player) {
+        console.log('player exists')
+        this.playerExists = true;
+      }
+      else {
+        console.log('player doesnt exist')
+        this.playerExists = false;
+      }
+  
+      // gets random hero for profile page
+      this.getHero();
+      this.savePlayerData(data);
 
-    // gets random hero for profile page
-    this.getHero();
+      
+    })
   }
 
   getLastPlayer() {
@@ -63,6 +73,13 @@ export class AlphaComponent implements OnInit {
     this.hero = this.heroArr[Math.floor(Math.random()*this.heroArr.length)];
     console.log("hero", this.hero);
   }
+
+  savePlayerData(data) {
+    this._httpService.setPlayerData(data);
+    console.log('saved')
+  }
+
+  
   
 
 }
