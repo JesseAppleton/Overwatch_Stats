@@ -1,3 +1,5 @@
+<button *ngIf="!boost" (click)="changeData(2000)">Boost My Ego</button>
+<button *ngIf="boost" (click)="changeData(-2000)">Back to Reality</button>
 <div id="container-container">
   <div id="chart-container" style="display: block;">
     <canvas baseChart width="400" height="400"

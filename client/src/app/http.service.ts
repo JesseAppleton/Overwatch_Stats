@@ -9,17 +9,20 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   chartData: any;
+  player: any;
+  playerData: any;
 
   constructor(private _httpClient :  HttpClient) { }
 
-  player: any;
 
   getPlayers() {
     return this._httpClient.get("/players");
   }
 
   getPlayer() {
-    return this.player;
+    console.log('inside HTTP', this.player)
+    console.log('playerData', this.playerData)
+    return this.playerData;
   }
 
   getOnePlayer(_id) {
@@ -37,10 +40,15 @@ export class HttpService {
   }
 
   getPlayerStats(player) {
-    this.player = this._httpClient.get(`http://overwatchy.com/profile/pc/us/${player.name}-${player.number}`);
+    this.playerData = this._httpClient.get(`http://overwatchy.com/profile/pc/us/${player.name}-${player.number}`);
     this.recentSearches.unshift({"name": player.name, "number": player.number, "data": this.player},)
-    return this.player;
+    return this.playerData;
 
+  }
+  
+  setPlayerData(data) {
+    console.log('saving player data', data)
+    this.playerData = data;
   }
 
   setChartData(data) {

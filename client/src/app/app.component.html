@@ -57,11 +57,14 @@
   <div *ngIf="showForm" class="text-center">
     <h1>Enter your BattleTag</h1>
     <form (submit)="submit()">
-      <p>
+      <div class="form-group">
         <input type="text" name="name" [(ngModel)]="tag" placeholder="Jesseyo#11148"/>
-        
         <button type="submit" class="btn btn-orange">Go!</button>
-      </p>
+
+      </div>
+
+        
+      
     </form>
   </div>
   
@@ -76,7 +79,7 @@
         </tr>
         <tr *ngFor="let player of recentSearches; index as i">
           <td> {{ i + 1 }} </td>
-          <td>{{ player.name }}#{{ player.number }}</td>
+          <td><a (click)="reSearch(player.name+'#'+player.number)" href="#">{{ player.name }}#{{ player.number }}</a></td>
           <td><a href="https://playoverwatch.com/en-us/career/pc/{{player.name}}-{{player.number}}">PlayOverwatch Profile</a></td>
         </tr>
       </table>

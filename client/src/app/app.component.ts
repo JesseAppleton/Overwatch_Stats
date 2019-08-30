@@ -23,6 +23,7 @@ export class AppComponent {
     
 
     this.getSearches();
+    
     this.showForm = true;
   }
 
@@ -36,16 +37,21 @@ export class AppComponent {
     observable.subscribe(data => {
       this.player = data;
       console.log("player", this.player)
+      // updates list
+      this.getSearches();
+  
+      // hides form;
+      this.showForm = !this.showForm;
+      
+      // routes to user info app
+      this._router.navigate([`/details`]);
       
     })
-    // updates list
-    this.getSearches();
+  }
 
-    // hides form;
-    this.showForm = !this.showForm;
-    
-    // routes to user info app
-    this._router.navigate([`/details`]);
+  reSearch(tag) {
+    this.tag = tag;
+    this.submit();
   }
 
   getSearches() {

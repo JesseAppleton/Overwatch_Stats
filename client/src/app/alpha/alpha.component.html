@@ -1,37 +1,42 @@
 <div *ngIf="playerExists">
 
     <div class="background-image">
-        <div class="content">
+        <div class="content d-flex">
 
-            <div class="row">
-                <div class="col-3 lg-2 md-2 sm-1">
-                    <h1><img src="{{ player.portrait }}" alt="player_portrait.png" style="width: 100px;"><em>{{ player.username }}</em></h1>
+            
+            <div style="padding: 5rem 10rem">
+                <div class="d-flex align-items-bottom justify-content-between">
+                    <img class="mr-2" src="{{ player.portrait }}" alt="player_portrait.png" style="width: 100px; border: 5px solid white">
+                    <h1 class="mb-0 mt-auto" style="font-style:italic;">{{ player.username }}</h1>
+                </div>
 
-                    <div class="d-flex justify-content-center align-items-center" [ngStyle]="{'background-image': 'url(' + player.levelFrame + ')', 'width':'200px', 'height':'200px', 'background-position':'center'}">
-                        <h3 class="mt-3">{{ player.level }}</h3>
-                    </div>
-                    
-                    <h3>{{ player.games.quickplay.won + player.games.competitive.won}} GAMES WON</h3>
-                    <h3 *ngIf="player.competitive.tank.rank">
-                        <img src="https://static.playoverwatch.com/img/pages/career/icon-tank-8a52daaf01.png" alt="tank_icon.png">
-                        | <img src="{{ player.competitive.tank.rank_img }}" alt="rank_img.png" style="width: 50px;">
-                        {{ player.competitive.tank.rank }}
-                    </h3>
-                    <h3 *ngIf="player.competitive.damage.rank">
-                        <img src="https://static.playoverwatch.com/img/pages/career/icon-offense-6267addd52.png" alt="damage_icon.png">
-                        | <img src="{{ player.competitive.damage.rank_img }}" alt="rank_img.png" style="width: 50px;">
-                        {{ player.competitive.damage.rank }}
-                    </h3>
-                    <h3 *ngIf="player.competitive.support.rank">
-                        <img src="https://static.playoverwatch.com/img/pages/career/icon-support-46311a4210.png" alt="support_icon.png">
-                        | <img src="{{ player.competitive.support.rank_img }}" alt="rank_img.png" style="width: 50px;">
-                        {{ player.competitive.support.rank }}
-                    </h3>
+                <div class="d-flex justify-content-center align-items-center" [ngStyle]="{'background-image': 'url(' + player.levelFrame + ')', 'width':'200px', 'height':'200px', 'background-position':'center'}">
+                    <h3 class="mt-3" id="level">{{ player.level }}</h3>
                 </div>
-                <div class="d-flex align-items-bottom">
-                    <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/{{ hero }}/career-portrait.png" alt="hero_image.png">
-                </div>
+                
+                <h3>{{ player.games.quickplay.won + player.games.competitive.won}} GAMES WON</h3>
+                <h3 *ngIf="player.competitive.tank.rank">
+                    <img src="https://static.playoverwatch.com/img/pages/career/icon-tank-8a52daaf01.png" alt="tank_icon.png">
+                    | <img src="{{ player.competitive.tank.rank_img }}" alt="rank_img.png" style="width: 50px;">
+                    {{ player.competitive.tank.rank }}
+                </h3>
+                <h3 *ngIf="player.competitive.damage.rank">
+                    <img src="https://static.playoverwatch.com/img/pages/career/icon-offense-6267addd52.png" alt="damage_icon.png">
+                    | <img src="{{ player.competitive.damage.rank_img }}" alt="rank_img.png" style="width: 50px;">
+                    {{ player.competitive.damage.rank }}
+                </h3>
+                <h3 *ngIf="player.competitive.support.rank">
+                    <img src="https://static.playoverwatch.com/img/pages/career/icon-support-46311a4210.png" alt="support_icon.png">
+                    | <img src="{{ player.competitive.support.rank_img }}" alt="rank_img.png" style="width: 50px;">
+                    {{ player.competitive.support.rank }}
+                </h3>
             </div>
+            <!-- <div class="d-flex align-items-bottom"> -->
+            <div class="d-flex ml-auto">
+                <img class="mt-auto" id="hero" src="https://d1u1mce87gyfbn.cloudfront.net/hero/{{ hero }}/career-portrait.png" alt="hero_image.png">
+            </div>
+            <!-- </div> -->
+            
         </div>
     </div>
 </div>
